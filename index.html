@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>{$title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+				rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/pages/dashboard.css" rel="stylesheet">
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+</head>
+<body>
+<div class="navbar navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"><span
+										class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.html">Bootstrap Admin Template </a>
+			<div class="nav-collapse">
+				<ul class="nav pull-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+														class="icon-cog"></i> Account <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:;">Settings</a></li>
+							<li><a href="javascript:;">Help</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+														class="icon-user"></i> EGrappler.com <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:;">Profile</a></li>
+							<li><a href="javascript:;">Logout</a></li>
+						</ul>
+					</li>
+				</ul>
+				<form class="navbar-search pull-right">
+					<input type="text" class="search-query" placeholder="Search">
+				</form>
+			</div>
+			<!--/.nav-collapse --> 
+		</div>
+		<!-- /container --> 
+	</div>
+	<!-- /navbar-inner --> 
+</div>
+<!-- /navbar -->
+<div class="subnavbar">
+	<div class="subnavbar-inner">
+		<div class="container">
+			<ul class="mainnav">
+				<li class="active"><a href="index.php"><i class="icon-dashboard"></i><span>Счета</span> </a> </li>
+				<li><a href="#"><i class="icon-list-alt"></i><span>Акты</span> </a> </li>
+				<li><a href="#"><i class="icon-facetime-video"></i><span>Компании</span> </a></li>
+			</ul>
+		</div>
+		<!-- /container --> 
+	</div>
+	<!-- /subnavbar-inner --> 
+</div>
+<!-- /subnavbar -->
+<div class="main">
+	<div class="main-inner">
+		<div class="container">
+			<div class="row">
+				<div class="span12">
+					<div class="widget widget-table action-table">
+						<div class="widget-header"> <i class="icon-th-list"></i>
+							<h3>{$title}</h3>
+						</div>
+						<!-- /widget-header -->
+						<div class="widget-content">
+							<table class="table table-striped table-bordered">
+								<thead>
+									<tr>
+										<th>№ </th>
+										<th>Дата</th>
+										<th>Плательщик</th>
+										<th>Сумма</th>
+										<th>Статус</th>
+										<th class="td-actions"> </th>
+									</tr>
+								</thead>
+								<tbody>
+									{foreach from=$all_bills item=bill_item name=bill_item}
+									{if $bill_item.status eq "not_pay"}
+										{assign var="bg_row_class" value="bg-danger"}
+									{elseif $bill_item.status eq "close"}
+										{assign var="bg_row_class" value="bg-success"}
+									{elseif $bill_item.status eq "cancel"}
+										{assign var="bg_row_class" value="bg-warning"}
+									{/if}
+									<tr id="{$bill_item.id_bill}" class="{$bg_row_class}">
+										<td>{$bill_item.id_bill}</td>
+										<td>{$bill_item.date_bill}</td>
+										<td>{$bill_item.company_name}</td>
+										<td><b>{$bill_item.sum_bill}</b> руб.</td>
+										<td>
+											<select class="form-control input-sm">
+												{if $bill_item.status eq "not_pay"}
+												<option value="not_pay" selected>Не оплачено</option>
+												{else}
+												<option value="not_pay">Не оплачено</option>
+												{/if}
+
+												{if $bill_item.status eq "close"}
+												<option value="close" selected>Закрыт актом</option>
+												{else}
+												<option value="close">Закрыт актом</option>
+												{/if}
+
+												{if $bill_item.status eq "cancel"}
+												<option value="cancel" selected>Отменен</option>
+												{else}
+												<option value="cancel">Отменен</option>
+												{/if}
+											</select>
+										</td>
+										<td class="td-actions">
+											<a href="act.php?id_bill={$bill_item.id_bill}" class="btn btn-success btn-sm">Акт</a>
+											<a href="#" class="btn btn-primary btn-sm">Email</a>
+											<a href="#" class="btn btn-danger btn-sm">PDF</a>
+										</td>
+									</tr>
+									{/foreach}
+								</tbody>
+							</table>
+						</div>
+						<!-- /widget-content --> 
+					</div>
+					<!-- /widget --> 
+				</div>
+				<!-- /span12 --> 
+			</div>
+			<!-- /row --> 
+		</div>
+		<!-- /container --> 
+	</div>
+	<!-- /main-inner --> 
+</div>
+<!-- /main -->
+<div class="footer">
+	<div class="footer-inner">
+		<div class="container">
+			<div class="row">
+				<div class="span12"> &copy; 2013 <a href="http://www.egrappler.com/">Bootstrap Responsive Admin Template</a>. </div>
+				<!-- /span12 --> 
+			</div>
+			<!-- /row --> 
+		</div>
+		<!-- /container --> 
+	</div>
+	<!-- /footer-inner --> 
+</div>
+<!-- /footer --> 
+<!-- Скрипты
+================================================== --> 
+{literal}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		$('#all_bills').on('change', 'select', function(){
+
+			var data = {};
+
+			data.status_bill = '';
+			data.id_bill = $(this).parents('tr').attr('id');
+			data.new_status =  $(this).val();
+
+			switch(data.new_status){
+				case "not_pay": $(this).parents('tr').removeClass().addClass("bg-danger"); break;
+				case "close": $(this).parents('tr').removeClass().addClass("bg-success"); break;
+				case "cancel": $(this).parents('tr').removeClass().addClass("bg-warning"); break;
+			}
+
+			$.post('./index.php', data, function(data) {
+				$('#status_bill').html(html);
+			}, 'json');
+
+		});
+
+	});
+</script>
+{/literal}
+
+</body>
+</html>

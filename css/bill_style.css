@@ -1,0 +1,101 @@
+@font-face {
+	font-family: 'proxima_nova_rg';
+	src: url('../fonts/proxima_nova/proximanova-bold-webfont.eot');
+	src: url('../fonts/proxima_nova/proximanova-bold-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/proxima_nova/proximanova-bold-webfont.woff') format('woff'),
+			 url('../fonts/proxima_nova/proximanova-bold-webfont.ttf') format('truetype'),
+			 url('../fonts/proxima_nova/proximanova-bold-webfont.svg#proxima_nova_rgbold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'proxima_nova_rg';
+	src: url('../fonts/proxima_nova/proximanova-reg-webfont.eot');
+	src: url('../fonts/proxima_nova/proximanova-reg-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('../fonts/proxima_nova/proximanova-reg-webfont.woff') format('woff'),
+			 url('../fonts/proxima_nova/proximanova-reg-webfont.ttf') format('truetype'),
+			 url('../fonts/proxima_nova/proximanova-reg-webfont.svg#proxima_nova_rgregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html {
+	font-size: 1.2em;
+	color: #1f1f1f;
+}
+
+body {
+	font: 1em proxima_nova_rg, Tahoma, Geneva, sans-serif;
+	margin: 0;
+	/*background-color: #fff;*/
+}
+
+.header_block {
+	margin-bottom: 100px;
+}
+
+h1 {
+	font-size: 24px;
+	text-align: left;
+	font-weight: 300;
+}
+
+.left_side {
+	text-align: left;
+}
+
+.soft_grey {
+	color: #7c7c7c;
+}
+
+table {
+	width: 100%;
+	text-align: left;
+}
+
+.example {
+	margin-bottom: 50px;
+}
+
+.example td {
+	padding: 5px;
+	border: 1px solid #7c7c7c;
+}
+
+
+/* "Winter Blues" CSS theme for CSS Table Gallery (http://icant.co.uk/csstablegallery/) by Gunta Klavina (http://www.klavina.com) */
+ table {
+    font-size: 85%;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+    color: #333;
+}
+table thead th {
+    background: #79a3ff;
+    padding: 15px 10px;
+    color: #000;
+    text-align: left;
+    font-weight: normal;
+}
+table tbody, table thead {
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+}
+table tbody td, table tbody th, table tfoot td, table tfoot th {
+    padding: 10px;
+    text-align: left;
+}
+table tfoot {
+    padding-top: 15px;
+}
+table tfoot td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+
+.cell-border {
+    border: 1px solid #7c7c7c;
+}
